@@ -14,7 +14,119 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chapters: {
+        Row: {
+          content: Json | null
+          created_at: string
+          id: string
+          novel_id: string
+          position: number
+          title: string
+          updated_at: string
+          user_id: string
+          word_count: number
+        }
+        Insert: {
+          content?: Json | null
+          created_at?: string
+          id?: string
+          novel_id: string
+          position?: number
+          title?: string
+          updated_at?: string
+          user_id: string
+          word_count?: number
+        }
+        Update: {
+          content?: Json | null
+          created_at?: string
+          id?: string
+          novel_id?: string
+          position?: number
+          title?: string
+          updated_at?: string
+          user_id?: string
+          word_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chapters_novel_id_fkey"
+            columns: ["novel_id"]
+            isOneToOne: false
+            referencedRelation: "novels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      novels: {
+        Row: {
+          cover_color: string
+          created_at: string
+          description: string | null
+          genre: string | null
+          id: string
+          is_favorite: boolean
+          status: string
+          subtitle: string | null
+          synopsis: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cover_color?: string
+          created_at?: string
+          description?: string | null
+          genre?: string | null
+          id?: string
+          is_favorite?: boolean
+          status?: string
+          subtitle?: string | null
+          synopsis?: string | null
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cover_color?: string
+          created_at?: string
+          description?: string | null
+          genre?: string | null
+          id?: string
+          is_favorite?: boolean
+          status?: string
+          subtitle?: string | null
+          synopsis?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
