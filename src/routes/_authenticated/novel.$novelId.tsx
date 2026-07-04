@@ -250,7 +250,7 @@ function ChapterEditor({
     const { error } = await supabase
       .from("chapters")
       .update({
-        content: latest.current.json,
+        content: latest.current.json as never,
         word_count: wordCount(latest.current.text),
       })
       .eq("id", chapter.id);

@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-const QUICK: { label: string; action: Parameters<typeof aiQuickAction>[0]["data"]["action"] }[] = [
+type QuickAction = "continue" | "rewrite" | "expand" | "shorten" | "improve_dialogue" | "improve_description" | "grammar" | "summarize";
+const QUICK: { label: string; action: QuickAction }[] = [
   { label: "Continue writing", action: "continue" },
   { label: "Rewrite", action: "rewrite" },
   { label: "Expand", action: "expand" },
